@@ -1,0 +1,23 @@
+<!doctype html>
+<html ng-app="htmlAnn">
+	<head>
+		<title>HTMLAnnotation</title>
+		<meta charset="utf8">
+		<!-- load assets -->
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<script type="text/javascript" src="htmlAnn.js"></script>
+	</head>
+	<body>
+		<div id="mainContainer" class="mainContainer">
+			<div class="panelContainer" ng-controller="listController">
+				<div ng-repeat="(key, val) in fragments" class="pageSelectContainer" ng-click="selectFragment(key, val)">
+					{{val.name}}
+				</div>
+			</div>
+			<div class="fragmentContainer" ng-controller="fragmentController">
+				<div dynamic src="html" trg="contentChanged()">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
