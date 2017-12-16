@@ -7,16 +7,17 @@ function webAppServer(settings) {
 	
 	var app = express();
 	
+	app.use(bodyParser.urlencoded({
+		extended: true
+	}));
+	app.use(bodyParser.json());
+	
 	//bring in the routes
 	var fragmentRoutes = require("../routes/fragment.js");
 	
 	//tell Express to use the routes
 	app.use(fragmentRoutes);
 	
-	app.use(bodyParser.urlencoded({
-		extended: true
-	}));
-	app.use(bodyParser.json());
 	app.use(express.static(settings.resources)); //static resources
 	
 	//request for the home page

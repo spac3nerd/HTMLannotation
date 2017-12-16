@@ -11,11 +11,11 @@ router.get("/fragment/getAll", function(req, res) {
 	res.end(JSON.stringify(packet), "utf-8");
 });
 
-router.post("/fragment/addAnnotation", function(req, res) {
-	var packet = {};
-	if (fragmentModel.addAnnotation(req.body.id, req.body.ann)) {
+function getModelPacket(modelRes) {
+	if (modelRes != false) {
 		packet = {
-			success: true
+			success: true,
+			data: modelRes
 		}
 	}
 	else {
@@ -23,8 +23,56 @@ router.post("/fragment/addAnnotation", function(req, res) {
 			success: false
 		}
 	}
+	return packet;
+};
+
+function send200Res(packet, res) {
 	res.writeHead(200, {"Content-Type": "text/plain"});
 	res.end(JSON.stringify(packet), "utf-8");
+};
+
+router.post("/fragment/addAnnotation", function(req, res) {
+	//var packet = {};
+	var packet = getModelPacket(fragmentModel.addAnnotation(req.body.fragId, req.body.ann));
+	/*
+	var modelRes = fragmentModel.addAnnotation(req.body.fragId, req.body.ann);
+	if (modelRes != false) {
+		packet = {
+			success: true,
+			data: modelRes
+		}
+	}
+	else {
+		packet = {
+			success: false
+		}
+	}
+	*/
+	send200Res(packet, res);
+	//res.writeHead(200, {"Content-Type": "text/plain"});
+	//res.end(JSON.stringify(packet), "utf-8");
+});
+
+router.post("/fragment/deleteAnnotation", function(req, res) {
+	//var packet = {};
+	var packet = getModelPacket(fragmentModel.deleteAnnotation(req.body.fragId, req.body.selId));
+	//var modelRes = fragmentModel.deleteAnnotation(req.body.fragId, req.body.selId);
+	/*
+	if (modelRes != false) {
+		packet = {
+			success: true,
+			data: modelRes
+		}
+	}
+	else {
+		packet = {
+			success: false
+		}
+	}
+	*/
+	send200Res(packet, res);
+	//res.writeHead(200, {"Content-Type": "text/plain"});
+	//res.end(JSON.stringify(packet), "utf-8");
 });
 
 module.exports = router;

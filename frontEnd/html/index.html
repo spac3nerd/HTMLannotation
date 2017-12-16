@@ -14,8 +14,18 @@
 					{{val.name}}
 				</div>
 			</div>
-			<div class="fragmentContainer" ng-controller="fragmentController">
-				<div dynamic src="html" trg="contentChanged()">
+			<div class="fragmentContainer leftRightSplit" ng-controller="fragmentController">
+				<div ng-click="didSelectContent()" id="dynamicCont" dynamic src="html" trg="contentChanged()" reload="reloadDynamicContainer">
+				</div>
+				<div ng-show="activated" class="annotationSection">
+					<div class="rowItem">
+						Color: 
+						<select style="background-color:{{selectedColor}}" name="color" id="colorSelect">
+							<option style="background-color:{{key}}" ng-repeat="(key, val) in annotationColors">{{key}}</option>
+						</select>
+					</div>
+					<textarea id="annotationArea" unselectable="on" placeholder="Enter Annotation" class="annotationArea"></textarea>
+					<button ng-click="editAnnotation()" class="annotationButton">{{annotationText}}</button>
 				</div>
 			</div>
 		</div>

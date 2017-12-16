@@ -25,9 +25,13 @@ module.exports = function(grunt) {
 				src: [
 					"lib/angular.js",
 					"lib/jquery.js",
+					"lib/jquery-ui.min.js",
+					"lib/jquery-ui-contextmenu.js",
 					"lib/rangy-core.js",
 					"lib/rangy-classapplier.js",
 					"lib/rangy-highlighter.js",
+					"lib/rangy-serializer.js",
+					"lib/rangy-selectionsaverestore.js",
 					"src/app.js",
 					"src/services/fragment.js",
 					"src/directives/dynamicContent.js",

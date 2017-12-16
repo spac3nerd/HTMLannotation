@@ -23,16 +23,30 @@
 	margin-top: 10px;
 	margin-bottom: 10px;
 	cursor: pointer;
+	user-select: none;
+}
+
+.annotationSection {
+	width: 150px;
+	display: flex;
+	flex-direction: column;
+	user-select: none;
+}
+
+.annotationArea {
+	width: 140px;
+	height: 200px;
+	resize: none;
 }
 
 .highlight1 {
 	background-color: Yellow;
 }
 .highlight2 {
-	background-color: Green;
+	background-color: Blue;
 }
 .highlight3 {
-	background-color: Blue;
+	background-color: Red;
 }
 .highlight4 {
 	background-color: Gray;
@@ -44,7 +58,7 @@
 	background-color: Purple;
 }
 .highlight7 {
-	background-color: Red;
+	background-color: Green;
 }
 .highlight8 {
 	background-color: Black;
