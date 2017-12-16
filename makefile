@@ -22,6 +22,5 @@ install: downloadLibs
 	sudo npm install -g grunt-cli; \
 	grunt; 
 	#build the backEnd
-	cd ../backEnd; \
+	cd ./backEnd; \
 	npm install; \
-	cd ..; \
